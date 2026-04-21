@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-slate-200;
+  }
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', serif;
+  }
+  code, pre, .font-mono {
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+@layer components {
+
+  /* ── Cards ───────────────────────────────────────────── */
+  .card {
+    @apply bg-white rounded-2xl shadow-md border border-slate-100 p-5;
+  }
+  .card-sm {
+    @apply bg-white rounded-xl shadow-sm border border-slate-100 p-4;
+  }
+  .card-hover {
+    @apply card transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  /* ── Stat cards ──────────────────────────────────────── */
+  .stat-card {
+    @apply card flex items-center gap-4;
+  }
+  .stat-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0;
+  }
+
+  /* ── Buttons ─────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold
+           transition-all duration-150 cursor-pointer select-none disabled:opacity-50
+           disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-blue-600 text-white shadow-sm;
+  }
+  .btn-primary:hover:not(:disabled) {
+    @apply bg-blue-700;
+  }
+  .btn-ghost {
+    @apply btn text-slate-600;
+  }
+  .btn-ghost:hover:not(:disabled) {
+    @apply bg-slate-100 text-slate-800;
+  }
+  .btn-outline {
+    @apply btn border border-slate-200 text-slate-600 bg-white;
+  }
+  .btn-outline:hover:not(:disabled) {
+    @apply bg-slate-50 border-slate-300;
+  }
+  .btn-danger {
+    @apply btn bg-rose-500 text-white;
+  }
+  .btn-danger:hover:not(:disabled) {
+    @apply bg-rose-600;
+  }
+  .btn-success {
+    @apply btn bg-emerald-500 text-white;
+  }
+  .btn-success:hover:not(:disabled) {
+    @apply bg-emerald-600;
+  }
+
+  /* ── Form inputs ─────────────────────────────────────── */
+  .input {
+    @apply w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white
+           text-sm text-slate-800 outline-none transition-all duration-150
+           focus:border-blue-400 focus:ring-2 focus:ring-blue-100;
+  }
+  .input-error {
+    @apply border-rose-300 focus:border-rose-400 focus:ring-2 focus:ring-rose-100;
+  }
+  .label {
+    @apply block text-xs font-semibold text-slate-500 mb-1.5;
+  }
+
+  /* ── Badges ──────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+  .badge-success { @apply badge bg-emerald-50 text-emerald-700; }
+  .badge-warning { @apply badge bg-amber-50 text-amber-700; }
+  .badge-danger { @apply badge bg-rose-50 text-rose-700; }
+  .badge-info { @apply badge bg-sky-50 text-sky-700; }
+  .badge-navy { @apply badge bg-blue-50 text-blue-700; }
+  .badge-neutral { @apply badge bg-slate-100 text-slate-600; }
+
+  /* ── Nav items ───────────────────────────────────────── */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
+           text-slate-500 transition-all duration-150 cursor-pointer
+           hover:bg-slate-200 hover:text-slate-900;
+  }
+  .nav-item.active {
+    @apply bg-slate-300 text-slate-900 font-semibold;
+  }
+
+  /* ── Table ───────────────────────────────────────────── */
+  .table-wrapper {
+    @apply bg-white rounded-2xl border border-slate-100 shadow-md overflow-hidden;
+  }
+  .table {
+    @apply w-full text-sm;
+  }
+  .table thead {
+    @apply bg-slate-50 border-b border-slate-100;
+  }
+  .table thead th {
+    @apply px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider;
+  }
+  .table tbody tr {
+    @apply border-b border-slate-50 transition-colors duration-100 hover:bg-slate-50;
+  }
+  .table tbody tr:last-child {
+    @apply border-b-0;
+  }
+  .table tbody td {
+    @apply px-4 py-3 text-slate-700;
+  }
+}
+
+@layer utilities {
+  .animate-slide-in {
+    animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .animate-fade-up {
+    animation: fadeUp 0.3s ease-out;
+  }
+  .animate-scale-in {
+    animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+  }
+  @keyframes fadeUp {
+    from { transform: translateY(12px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  @keyframes scaleIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+}
